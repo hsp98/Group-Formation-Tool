@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<title>CSCI-5308 : TA and Instructor Pages</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href="@{/CSS/TAandInstructorCourses.css}" rel="stylesheet" />
+</head>
+<body>
+	<h1>
+		<center>
+			<b><i>CSCI-5308 : Courses</i></b>
+		</center>
+	</h1>
+	<h2>
+		<center>List of Courses Assigned</center>
+	</h2>
+
+	<center>
+		<table border=4>
+			<tr>
+				<th>Course ID</th>
+				<th>Course Name</th>
+				<th>Term</th>
+				<th>Year</th>
+				<th>Description</th>
+
+			</tr>
+
+			<tr th:each="course, itemStat: *{courseList}">
+
+				<td><a th:href="@{/student/survey/{courseId}(courseId=${course.cid})}"><span th:text="${course.cid}"></span></a></td>
+				<td><span th:text="${course.name}"></span></td>
+				<td><span th:text="${course.year}"></span></td>
+				<td><span th:text="${course.term}"></span></td>
+				<td><span th:text="${course.description}"></span></td>
+
+			</tr>
+
+		</table>
+	</center>
+	<br />
+
+	<center>
+		<a href="/ta/courseAdmin">Click Here to visit Course Admin Page</a>
+	</center>
+
+</body>
+</html>
